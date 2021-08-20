@@ -1,3 +1,36 @@
 body{
-    background-color: antiquewhite;
+    background-color: rgb(240,240,240);
 }
+
+.container {
+    width: 500px;
+    height: 500px;
+    background-color: rgb(44,44,44);
+    display: grid;
+    grid-template-columns: 200px 200px;
+}
+
+#red {
+    background-color: rgb(221, 31, 44);
+}
+
+#blue {
+    background-color: rgb(14, 116, 212);
+}
+
+#green {
+    background-color: rgb(43, 201, 56);
+}
+
+#yellow {
+    background-color: rgb(241, 241, 80);
+}
+
+
+
+
+/* sources
+
+https://codepen.io/MattWindle/pen/perZRG for 2x2 css grid
+
+*/
