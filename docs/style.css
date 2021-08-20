@@ -1,13 +1,36 @@
+*{
+    margin:0;
+    padding:0;
+    
+}
 body{
     background-color: rgb(240,240,240);
-}
 
+}
+h1 {
+    text-align: center;
+}
 .container {
+    margin: auto auto;
     width: 500px;
     height: 500px;
     background-color: rgb(44,44,44);
     display: grid;
     grid-template-columns: 200px 200px;
+    column-gap: 10px;
+    row-gap: 10px;
+    border-radius: 20px;
+    box-sizing:border-box;
+    justify-content: space-evenly;
+    justify-items: center;
+    align-content: space-evenly;
+    align-items: center;
+}
+.box{
+    border-radius: 20px;
+    width: 200px;
+    height: 200px;
+    box-sizing: border-box;
 }
 
 #red {
@@ -29,8 +52,10 @@ body{
 
 
 
-/* sources
+/* sources:
+for 2x2 css grid -
+https://www.digitalocean.com/community/tutorials/css-align-justify 
+https://css-tricks.com/snippets/css/complete-guide-grid/
 
-https://codepen.io/MattWindle/pen/perZRG for 2x2 css grid
 
 */
