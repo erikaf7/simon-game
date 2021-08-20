@@ -33,23 +33,23 @@ h1 {
     box-sizing: border-box;
 }
 
-#red {
+.red {
     background-color: rgb(221, 31, 44);
 }
 
-#blue {
+.blue {
     background-color: rgb(14, 116, 212);
 }
 
-#green {
+.green {
     background-color: rgb(43, 201, 56);
 }
 
-#yellow {
+.yellow {
     background-color: rgb(241, 241, 80);
 }
 
-#flash {
+.flash {
     background-color: rgb(230, 230, 230);
 }
 
