@@ -11,17 +11,25 @@ const randomNum = (min, max) => {
 }
 
 const removeRedFlash = () => {
-        red.classList.remove("flash");
+    red.classList.remove("flash");
 }
 
 const removeBlueFlash = () => {
     blue.classList.remove("flash");
 }
 
+const removeGreenFlash = () => {
+    green.classList.remove("flash");
+}
+
+const removeYellowFlash = () => {
+    yellow.classList.remove("flash");
+}
+
 const computerPattern = (choices) =>{
 
     for (i=0; i< choices.length; i++){
-        wait3();
+
         if(choices[i] === 1){
             red.classList.add("flash");
             setTimeout(removeRedFlash, 3000);
@@ -45,9 +53,24 @@ console.log(computerChoices);
 computerChoices.forEach((num, i) => {
     setTimeout(() => {
         console.log(num);
-    }, i* 1000);
+        if(num === 1){
+            red.classList.add("flash");
+            setTimeout(removeRedFlash, 2000);
+        } else if(num === 2){
+            blue.classList.add("flash");
+            setTimeout(removeBlueFlash, 2000);
+        }else if(num === 3){
+            green.classList.add("flash");
+            setTimeout(removeGreenFlash, 2000);
+        }else if(num === 4){
+            yellow.classList.add("flash");
+            setTimeout(removeYellowFlash, 2000);
+        }else {
+            console.log("was changed/null" + num);
+        }
+    }, i* 3000);
 });
-computerPattern(computerChoices);
+
 
 
 /* source:
