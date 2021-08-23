@@ -92,7 +92,6 @@ const checkChoices = () =>{
         if(userChoices[i] === computerChoices[i]){
             choicesArray.push(computerChoices[i]);
         }else{
-            setTimeout(alert, 1000, 'That was not correct');
             console.log(computerChoices);
             console.log(userChoices);
         }
@@ -105,8 +104,9 @@ const checkChoices = () =>{
         computerChoices.push(randomNum(1,4));
         console.log(computerChoices);
         setTimeout(showPattern, 3000);
-        userChoices.splice(0, userChoices.length);
-        
+        userChoices.splice(0, userChoices.length);   
+    }else{
+        setTimeout(alert, 1000, 'That was not correct');
     }
 }
 
