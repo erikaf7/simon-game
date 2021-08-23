@@ -2,6 +2,7 @@ const computerChoices = [];
 const userChoices = [];
 let userPoints = 0;
 let pointsDisplayed = document.querySelector("body > div:nth-child(4) > p");
+let gameStatus = document.querySelector("body > div:nth-child(5) > p")
 const red = document.querySelector("#one");
 const blue = document.querySelector("#two");
 const green = document.querySelector("#three");
@@ -27,7 +28,7 @@ const userSelect = (box) => {
             console.log(userChoices);
             checkChoices();
         }
-        setTimeout(removeBoxFlash, 500, box);
+        setTimeout(removeBoxFlash, 400, box);
         
 
     })
@@ -63,7 +64,9 @@ const removeYellowFlash = () => {
 const removeBoxFlash = (box) => {
     box.classList.remove("flash");
 }
-
+const changeStatus = () => {
+    gameStatus.innerHTML = 'Watch the pattern and copy it.';
+}
 const showPattern = () => {
     computerChoices.forEach((num, i) => {
         setTimeout(() => {
@@ -98,22 +101,23 @@ const checkChoices = () =>{
     }
     }
     if(choicesArray.length === computerChoices.length){
-        setTimeout(alert, 1000, 'That was correct');
+        gameStatus.innerHTML = "You got it!";
         userPoints ++;
         pointsDisplayed.innerHTML = (userPoints);
+        setTimeout(changeStatus, 1500);
         computerChoices.push(randomNum(1,4));
-        console.log(computerChoices);
         setTimeout(showPattern, 3000);
         userChoices.splice(0, userChoices.length);   
-    }else{
-        setTimeout(alert, 1000, 'That was not correct');
+    }else if(userChoices.length === computerChoices.length){
+        gameStatus.innerHTML = "That was wrong.";
     }
 }
 
 const gameStart = () => {
     gameReset();
+    changeStatus();
     computerChoices.push(randomNum(1,4));
-        showPattern();
+    setTimeout(showPattern, 1500);
     while(userChoices.length === computerChoices.length){
         checkChoices();
         console.log(computerChoices);
@@ -130,6 +134,7 @@ const gameReset = () => {
     pointsDisplayed.innerHTML = (userPoints);
     console.log(computerChoices);
     console.log(userChoices);
+    gameStatus.innerHTML = "Press START to play.";
 }
 
 document.querySelector("body > div.buttons > button:nth-child(1)").onclick = gameStart;
