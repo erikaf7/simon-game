@@ -26,23 +26,8 @@ const removeYellowFlash = () => {
     yellow.classList.remove("flash");
 }
 
-const computerPattern = (choices) =>{
-
-    for (i=0; i< choices.length; i++){
-
-        if(choices[i] === 1){
-            red.classList.add("flash");
-            setTimeout(removeRedFlash, 3000);
-        } else if(choices[i] === 2){
-            blue.classList.add("flash");
-        }else if(choices[i] === 3){
-            green.classList.add("flash");
-        }else if(choices[i] === 4){
-            yellow.classList.add("flash");
-        }else {
-            console.log("was changed/null" + choices[i]);
-        }
-    }
+const removeBoxFlash = (box) => {
+    box.classList.remove("flash");
 }
 
 computerChoices.push(randomNum(1,4));
@@ -50,30 +35,41 @@ computerChoices.push(randomNum(1,4));
 computerChoices.push(randomNum(1,4));
 console.log(computerChoices);
 
+
 computerChoices.forEach((num, i) => {
     setTimeout(() => {
         console.log(num);
         if(num === 1){
             red.classList.add("flash");
-            setTimeout(removeRedFlash, 2000);
+            setTimeout(removeRedFlash, 1000);
         } else if(num === 2){
             blue.classList.add("flash");
-            setTimeout(removeBlueFlash, 2000);
+            setTimeout(removeBlueFlash, 1000);
         }else if(num === 3){
             green.classList.add("flash");
-            setTimeout(removeGreenFlash, 2000);
+            setTimeout(removeGreenFlash, 1000);
         }else if(num === 4){
             yellow.classList.add("flash");
-            setTimeout(removeYellowFlash, 2000);
+            setTimeout(removeYellowFlash, 1000);
         }else {
             console.log("was changed/null" + num);
         }
-    }, i* 3000);
+    }, i * 2000);
 });
 
+const userSelect = (box) => {
+    box.addEventListener('click', () => {
+        box.classList.add ("flash");
+        setTimeout(removeBoxFlash, 500, box);
+    })
+}
 
+userSelect(red);
+userSelect(blue);
+userSelect(green);
+userSelect(yellow);
 
-/* source:
+/* sources:
 random number -
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 
