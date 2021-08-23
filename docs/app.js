@@ -90,14 +90,20 @@ userSelect(green);
 userSelect(yellow);
 
 const checkChoices = () =>{
+    let choicesArray = [];
     if(userChoices.length === computerChoices.length){
     for (let i = 0; i< computerChoices.length; i++){
         if(userChoices[i] === computerChoices[i]){
-            alert('That was right');
+            // alert('That was right');
+            choicesArray.push(computerChoices[i]);
+            console.log(choicesArray);
         }else{
             alert('That was not right');
         }
     }
+    }
+    if(choicesArray.length === computerChoices.length){
+        alert('That was correct!');
     }
 }
 
