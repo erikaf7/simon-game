@@ -62,29 +62,7 @@ const removeBoxFlash = (box) => {
     box.classList.remove("flash");
 }
 
-
-
-const checkChoices = () =>{
-    let choicesArray = [];
-    if(userChoices.length === computerChoices.length){
-    for (let i = 0; i< computerChoices.length; i++){
-        if(userChoices[i] === computerChoices[i]){
-            choicesArray.push(computerChoices[i]);
-            console.log(choicesArray);
-        }else{
-            alert('That was not correct');
-        }
-    }
-    }
-    if(choicesArray.length === computerChoices.length){
-        alert('That was correct!');
-    }
-}
-
-const gameStart = () => {
-    //computerChoices = [];
-    //userChoices = [];
-    computerChoices.push(randomNum(1,4));
+const showPattern = () => {
     computerChoices.forEach((num, i) => {
         setTimeout(() => {
             console.log(num);
@@ -103,13 +81,53 @@ const gameStart = () => {
             }
         }, i * 2000);
     });
+}
+
+const checkChoices = () =>{
+    let choicesArray = [];
+    if(userChoices.length === computerChoices.length){
+    for (let i = 0; i< computerChoices.length; i++){
+        if(userChoices[i] === computerChoices[i]){
+            choicesArray.push(computerChoices[i]);
+        }else{
+            setTimeout(alert, 1000, 'That was not correct');
+            console.log(computerChoices);
+            console.log(userChoices);
+        }
+    }
+    }
+    if(choicesArray.length === computerChoices.length){
+        setTimeout(alert, 1000, 'That was correct');
+        computerChoices.push(randomNum(1,4));
+        userChoices.splice(0, userChoices.length);
+        console.log(computerChoices);
+        setTimeout(showPattern, 3000);
+        
+    }
+}
+
+const gameStart = () => {
+    gameReset();
+    computerChoices.push(randomNum(1,4));
+        showPattern();
     while(userChoices.length === computerChoices.length){
         checkChoices();
+        console.log(computerChoices);
+
+        userChoices.splice(0, userChoices.length);
     }
 
 }
 
+const gameReset = () => {
+    computerChoices.splice(0, computerChoices.length);
+    userChoices.splice(0, userChoices.length);
+    console.log(computerChoices);
+    console.log(userChoices);
+}
+
 document.querySelector("body > div.buttons > button:nth-child(1)").onclick = gameStart;
+document.querySelector("body > div.buttons > button:nth-child(2)").onclick = gameReset;
 /* sources:
 random number -
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
