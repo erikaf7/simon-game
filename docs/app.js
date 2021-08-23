@@ -1,5 +1,7 @@
 const computerChoices = [];
 const userChoices = [];
+let userPoints = 0;
+let pointsDisplayed = document.querySelector("body > div:nth-child(4) > p");
 const red = document.querySelector("#one");
 const blue = document.querySelector("#two");
 const green = document.querySelector("#three");
@@ -98,10 +100,12 @@ const checkChoices = () =>{
     }
     if(choicesArray.length === computerChoices.length){
         setTimeout(alert, 1000, 'That was correct');
+        userPoints ++;
+        pointsDisplayed.innerHTML = (userPoints);
         computerChoices.push(randomNum(1,4));
-        userChoices.splice(0, userChoices.length);
         console.log(computerChoices);
         setTimeout(showPattern, 3000);
+        userChoices.splice(0, userChoices.length);
         
     }
 }
@@ -122,6 +126,8 @@ const gameStart = () => {
 const gameReset = () => {
     computerChoices.splice(0, computerChoices.length);
     userChoices.splice(0, userChoices.length);
+    userPoints = 0
+    pointsDisplayed.innerHTML = (userPoints);
     console.log(computerChoices);
     console.log(userChoices);
 }
