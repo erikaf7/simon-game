@@ -5,59 +5,6 @@ const blue = document.querySelector("#two");
 const green = document.querySelector("#three");
 const yellow = document.querySelector("#four");
 
-const randomNum = (min, max) => {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min +1) + min);
-}
-
-const removeRedFlash = () => {
-    red.classList.remove("flash");
-}
-
-const removeBlueFlash = () => {
-    blue.classList.remove("flash");
-}
-
-const removeGreenFlash = () => {
-    green.classList.remove("flash");
-}
-
-const removeYellowFlash = () => {
-    yellow.classList.remove("flash");
-}
-
-const removeBoxFlash = (box) => {
-    box.classList.remove("flash");
-}
-
-computerChoices.push(randomNum(1,4));
-computerChoices.push(randomNum(1,4));
-computerChoices.push(randomNum(1,4));
-console.log(computerChoices);
-
-
-computerChoices.forEach((num, i) => {
-    setTimeout(() => {
-        console.log(num);
-        if(num === 1){
-            red.classList.add("flash");
-            setTimeout(removeRedFlash, 1000);
-        } else if(num === 2){
-            blue.classList.add("flash");
-            setTimeout(removeBlueFlash, 1000);
-        }else if(num === 3){
-            green.classList.add("flash");
-            setTimeout(removeGreenFlash, 1000);
-        }else if(num === 4){
-            yellow.classList.add("flash");
-            setTimeout(removeYellowFlash, 1000);
-        }else {
-            console.log("was changed/null" + num);
-        }
-    }, i * 2000);
-});
-
 const userSelect = (box) => {
     box.addEventListener('click', () => {
         box.classList.add ("flash");
@@ -89,16 +36,43 @@ userSelect(blue);
 userSelect(green);
 userSelect(yellow);
 
+const randomNum = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min +1) + min);
+}
+
+const removeRedFlash = () => {
+    red.classList.remove("flash");
+}
+
+const removeBlueFlash = () => {
+    blue.classList.remove("flash");
+}
+
+const removeGreenFlash = () => {
+    green.classList.remove("flash");
+}
+
+const removeYellowFlash = () => {
+    yellow.classList.remove("flash");
+}
+
+const removeBoxFlash = (box) => {
+    box.classList.remove("flash");
+}
+
+
+
 const checkChoices = () =>{
     let choicesArray = [];
     if(userChoices.length === computerChoices.length){
     for (let i = 0; i< computerChoices.length; i++){
         if(userChoices[i] === computerChoices[i]){
-            // alert('That was right');
             choicesArray.push(computerChoices[i]);
             console.log(choicesArray);
         }else{
-            alert('That was not right');
+            alert('That was not correct');
         }
     }
     }
@@ -107,6 +81,35 @@ const checkChoices = () =>{
     }
 }
 
+const gameStart = () => {
+    //computerChoices = [];
+    //userChoices = [];
+    computerChoices.push(randomNum(1,4));
+    computerChoices.forEach((num, i) => {
+        setTimeout(() => {
+            console.log(num);
+            if(num === 1){
+                red.classList.add("flash");
+                setTimeout(removeRedFlash, 1000);
+            } else if(num === 2){
+                blue.classList.add("flash");
+                setTimeout(removeBlueFlash, 1000);
+            }else if(num === 3){
+                green.classList.add("flash");
+                setTimeout(removeGreenFlash, 1000);
+            }else if(num === 4){
+                yellow.classList.add("flash");
+                setTimeout(removeYellowFlash, 1000);
+            }
+        }, i * 2000);
+    });
+    while(userChoices.length === computerChoices.length){
+        checkChoices();
+    }
+
+}
+
+document.querySelector("body > div.buttons > button:nth-child(1)").onclick = gameStart;
 /* sources:
 random number -
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random

@@ -53,7 +53,9 @@ h1 {
     background-color: rgb(230, 230, 230);
 }
 
-
+.buttons {
+    text-align: center;
+}
 /* sources:
 for 2x2 css grid -
 https://www.digitalocean.com/community/tutorials/css-align-justify 
