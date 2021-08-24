@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Pattaya&family=Roboto&display=swap');
+
 *{
     margin:0;
     padding:0;
@@ -8,29 +10,40 @@ body{
 
 }
 h1 {
+    font-family: 'Pattaya', sans-serif;
     text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+h2{
+    font-family: 'Pattaya', sans-serif;
+}
+p{
+    font-family: 'Roboto', sans-serif;
 }
 .container {
     margin: auto auto;
-    width: 500px;
-    height: 500px;
+    width: 475px;
+    height: 475px;
     background-color: rgb(44,44,44);
     display: grid;
     grid-template-columns: 200px 200px;
-    column-gap: 10px;
+    /*column-gap: 10px;
     row-gap: 10px;
-    border-radius: 20px;
+    justify-items: center;
+    align-items: center;*/
+    border-radius: 14px;
     box-sizing:border-box;
     justify-content: space-evenly;
-    justify-items: center;
     align-content: space-evenly;
-    align-items: center;
+
 }
 .box{
-    border-radius: 20px;
+    border-radius: 14px;
     width: 200px;
     height: 200px;
     box-sizing: border-box;
+
 }
 
 .red {
@@ -55,6 +68,15 @@ h1 {
 
 .buttons {
     text-align: center;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+button {
+    padding-left: 2%;
+    padding-right: 2%;
 }
 /* sources:
 for 2x2 css grid -

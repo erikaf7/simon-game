@@ -79,44 +79,11 @@ const clickEnabled = () => {
     yellow.addEventListener('click', userSelectYellow);
 }
 
-let noClickWhilePatternShowing = new Promise((resolve, reject) => {
-    computerChoices.forEach((num, i) => {
-        setTimeout(() => {
-            console.log(num);
-            if(num === 1){
-                red.classList.add("flash");
-                setTimeout(removeRedFlash, 1000);
-            } else if(num === 2){
-                blue.classList.add("flash");
-                setTimeout(removeBlueFlash, 1000);
-            }else if(num === 3){
-                green.classList.add("flash");
-                setTimeout(removeGreenFlash, 1000);
-            }else if(num === 4){
-                yellow.classList.add("flash");
-                setTimeout(removeYellowFlash, 1000);
-            }
-            resolve("Success!");
-
-        }, i * 2000);
-
-    });
-});
-
-
-
-noClickWhilePatternShowing.then((clickEnabled) => {
-    clickEnabled();
-});
-
 const showPattern = () => {
     red.removeEventListener('click', userSelectRed);
     blue.removeEventListener('click', userSelectBlue);
     green.removeEventListener('click', userSelectGreen);
     yellow.removeEventListener('click', userSelectYellow);
-    // noClickWhilePatternShowing.then((clickEnabled) => {
-    //     clickEnabled();
-    // });
     computerChoices.forEach((num, i) => {
         setTimeout(() => {
             console.log(num);
@@ -133,7 +100,6 @@ const showPattern = () => {
                 yellow.classList.add("flash");
                 setTimeout(removeYellowFlash, 1000);
             }
-
 
         }, i * 2000
 
@@ -141,10 +107,6 @@ const showPattern = () => {
         let time = computerChoices.length * 2000;
         setTimeout(clickEnabled, time+100);
         setTimeout(changeStatusReady, time+100);
-        // red.addEventListener('click', userSelectRed);
-        // blue.addEventListener('click', userSelectBlue);
-        // green.addEventListener('click', userSelectGreen);
-        // yellow.addEventListener('click', userSelectYellow);
     });
 
 }
@@ -166,6 +128,10 @@ const checkChoices = () =>{
     }
     if(choicesArray.length === computerChoices.length){
         gameStatus.innerHTML = "You got it!";
+        red.removeEventListener('click', userSelectRed);
+        blue.removeEventListener('click', userSelectBlue);
+        green.removeEventListener('click', userSelectGreen);
+        yellow.removeEventListener('click', userSelectYellow);
         userPoints ++;
         pointsDisplayed.innerHTML = (userPoints);
         setTimeout(changeStatus, 1500);
@@ -224,8 +190,6 @@ https://travishorn.com/delaying-foreach-iterations-2ebd4b29ad30
 remove event listener -
 https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener
 
-promises -
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
 
 */
 
