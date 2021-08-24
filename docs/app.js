@@ -71,6 +71,10 @@ const changeStatus = () => {
     gameStatus.innerHTML = 'Watch the pattern and copy it.';
 }
 const showPattern = () => {
+    red.removeEventListener('click', userSelectRed);
+    blue.removeEventListener('click', userSelectBlue);
+    green.removeEventListener('click', userSelectGreen);
+    yellow.removeEventListener('click', userSelectYellow);
     computerChoices.forEach((num, i) => {
         setTimeout(() => {
             console.log(num);
@@ -87,8 +91,17 @@ const showPattern = () => {
                 yellow.classList.add("flash");
                 setTimeout(removeYellowFlash, 1000);
             }
-        }, i * 2000);
+
+
+        }, i * 2000
+
+        );
+        red.addEventListener('click', userSelectRed);
+        blue.addEventListener('click', userSelectBlue);
+        green.addEventListener('click', userSelectGreen);
+        yellow.addEventListener('click', userSelectYellow);
     });
+
 }
 
 const checkChoices = () =>{
@@ -125,10 +138,6 @@ const gameStart = () => {
     changeStatus();
     computerChoices.push(randomNum(1,4));
     setTimeout(showPattern, 1500);
-    red.addEventListener('click', userSelectRed);
-    blue.addEventListener('click', userSelectBlue);
-    green.addEventListener('click', userSelectGreen);
-    yellow.addEventListener('click', userSelectYellow);
     while(userChoices.length === computerChoices.length){
         checkChoices();
         console.log(computerChoices);
@@ -150,6 +159,7 @@ const gameReset = () => {
 
 document.querySelector("body > div.buttons > button:nth-child(1)").onclick = gameStart;
 document.querySelector("body > div.buttons > button:nth-child(2)").onclick = gameReset;
+
 /* sources:
 random number -
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
@@ -163,8 +173,11 @@ https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTi
 delay for each - 
 https://travishorn.com/delaying-foreach-iterations-2ebd4b29ad30
 
-
 remove event listener -
 https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener
+
+promises -
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
+
 */
 
