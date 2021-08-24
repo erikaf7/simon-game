@@ -10,9 +10,51 @@ const green = document.querySelector("#three");
 const yellow = document.querySelector("#four");
 const volume = document.querySelector("body > div.buttons > button:nth-child(3)")
 
+
+const correctSound = () => {
+    if(soundOn === true){
+        let audio = new Audio("correct.mp3");
+        audio.play();
+    }
+}
+
+const incorrectSound = () => {
+    if(soundOn === true){
+        let audio = new Audio("incorrect.mp3");
+        audio.play();
+    }
+
+}
+
+const redSound = () => {
+    if(soundOn === true){
+        let audio = new Audio("box1.mp3");
+        audio.play();
+    }
+}
+const blueSound = () => {
+    if(soundOn === true){
+        let audio = new Audio("box2.mp3");
+        audio.play();
+    }
+}
+const greenSound = () => {
+    if(soundOn === true){
+        let audio = new Audio("box3.mp3");
+        audio.play();
+    }
+}
+const yellowSound = () => {
+    if(soundOn === true){
+        let audio = new Audio("box4.mp3");
+        audio.play();
+    }
+}
+
 const userSelectRed = () => {  
     red.classList.add ("flash");
     userChoices.push(1);
+    redSound();
     setTimeout(removeBoxFlash, 400, red);
     checkChoices();
 }
@@ -20,6 +62,7 @@ const userSelectRed = () => {
 const userSelectBlue = () => {  
     blue.classList.add ("flash");
     userChoices.push(2);
+    blueSound();
     setTimeout(removeBoxFlash, 400, blue);
     checkChoices();
 } 
@@ -27,6 +70,7 @@ const userSelectBlue = () => {
 const userSelectGreen = () => {  
     green.classList.add ("flash");
     userChoices.push(3);
+    greenSound();
     setTimeout(removeBoxFlash, 400, green);
     checkChoices();
 
@@ -35,6 +79,7 @@ const userSelectGreen = () => {
 const userSelectYellow = (box) => {  
     yellow.classList.add ("flash");
     userChoices.push(4);
+    yellowSound();
     setTimeout(removeBoxFlash, 400, yellow);
     checkChoices();
 
@@ -74,20 +119,6 @@ const changeStatusReady = () => {
     gameStatus.innerHTML = 'Your turn.';
 }
 
-const correctSound = () => {
-    if(soundOn === true){
-        let audio = new Audio("correct.mp3");
-        audio.play();
-    }
-}
-
-const incorrectSound = () => {
-    if(soundOn === true){
-        let audio = new Audio("incorrect.mp3");
-        audio.play();
-    }
-
-}
 
 const clickEnabled = () => {
     red.addEventListener('click', userSelectRed);
@@ -105,15 +136,19 @@ const showPattern = () => {
         setTimeout(() => {
             if(num === 1){
                 red.classList.add("flash");
+                redSound();
                 setTimeout(removeRedFlash, 1000);
             } else if(num === 2){
                 blue.classList.add("flash");
+                blueSound();
                 setTimeout(removeBlueFlash, 1000);
             }else if(num === 3){
                 green.classList.add("flash");
+                greenSound();
                 setTimeout(removeGreenFlash, 1000);
             }else if(num === 4){
                 yellow.classList.add("flash");
+                yellowSound();
                 setTimeout(removeYellowFlash, 1000);
             }
 
