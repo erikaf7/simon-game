@@ -92,12 +92,12 @@ button {
     h1 {
         font-family: 'Pattaya', sans-serif;
         text-align: center;
-        padding-top: 2%;
-        padding-bottom: 2%;
+        padding-top: 1%;
+        padding-bottom: 1%;
     }
     h2{
         font-family: 'Pattaya', sans-serif;
-        padding: 2%;
+        padding: 1%;
         text-align: center;
     }
     p{
@@ -162,7 +162,7 @@ button {
     }
 
     p {
-        padding: 2%;
+        padding: 1%;
         text-align: center;
     }
     
