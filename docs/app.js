@@ -1,12 +1,14 @@
 const computerChoices = [];
 const userChoices = [];
 let userPoints = 0;
+let soundOn = true;
 let pointsDisplayed = document.querySelector("body > div:nth-child(5) > p");
 let gameStatus = document.querySelector("body > div:nth-child(4) > p");
 const red = document.querySelector("#one");
 const blue = document.querySelector("#two");
 const green = document.querySelector("#three");
 const yellow = document.querySelector("#four");
+const volume = document.querySelector("body > div.buttons > button:nth-child(3)")
 
 const userSelectRed = () => {  
     red.classList.add ("flash");
@@ -73,8 +75,18 @@ const changeStatusReady = () => {
 }
 
 const correctSound = () => {
-    let audio = new Audio("correct.mp3")
-    audio.play()
+    if(soundOn === true){
+        let audio = new Audio("correct.mp3");
+        audio.play();
+    }
+}
+
+const incorrectSound = () => {
+    if(soundOn === true){
+        let audio = new Audio("incorrect.mp3");
+        audio.play();
+    }
+
 }
 
 const clickEnabled = () => {
@@ -123,6 +135,7 @@ const checkChoices = () =>{
             choicesArray.push(computerChoices[i]);
         }else if(userChoices.length > computerChoices){
             gameStatus.innerHTML = "That was wrong, game over!";
+            incorrectSound();
             red.removeEventListener('click', userSelectRed);
             blue.removeEventListener('click', userSelectBlue);
             green.removeEventListener('click', userSelectGreen);
@@ -132,7 +145,7 @@ const checkChoices = () =>{
     }
     if(choicesArray.length === computerChoices.length){
         gameStatus.innerHTML = "You got it!";
-        correctSound();
+        setTimeout(correctSound, 500);
         red.removeEventListener('click', userSelectRed);
         blue.removeEventListener('click', userSelectBlue);
         green.removeEventListener('click', userSelectGreen);
@@ -145,6 +158,7 @@ const checkChoices = () =>{
         userChoices.splice(0, userChoices.length);   
     }else if(userChoices.length === computerChoices.length){
         gameStatus.innerHTML = "That was wrong, game over!";
+        incorrectSound();
         red.removeEventListener('click', userSelectRed);
         blue.removeEventListener('click', userSelectBlue);
         green.removeEventListener('click', userSelectGreen);
@@ -171,6 +185,18 @@ const gameReset = () => {
     gameStatus.innerHTML = "Press START to play.";
 }
 
+const volumeMute = () => {
+    volume.classList.toggle("mute");
+    if(volume.classList.contains("mute")){
+        soundOn = false;
+        volume.innerHTML = "VOLUME ON";
+    } else{
+        soundOn = true;
+        volume.innerHTML = "VOLUME OFF";
+    }
+}
+
+volume.onclick = volumeMute
 document.querySelector("body > div.buttons > button:nth-child(1)").onclick = gameStart;
 document.querySelector("body > div.buttons > button:nth-child(2)").onclick = gameReset;
 
