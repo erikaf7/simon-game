@@ -72,6 +72,11 @@ const changeStatusReady = () => {
     gameStatus.innerHTML = 'Your turn.';
 }
 
+const correctSound = () => {
+    let audio = new Audio("correct.mp3")
+    audio.play()
+}
+
 const clickEnabled = () => {
     red.addEventListener('click', userSelectRed);
     blue.addEventListener('click', userSelectBlue);
@@ -127,6 +132,7 @@ const checkChoices = () =>{
     }
     if(choicesArray.length === computerChoices.length){
         gameStatus.innerHTML = "You got it!";
+        correctSound();
         red.removeEventListener('click', userSelectRed);
         blue.removeEventListener('click', userSelectBlue);
         green.removeEventListener('click', userSelectGreen);
@@ -185,6 +191,7 @@ https://travishorn.com/delaying-foreach-iterations-2ebd4b29ad30
 remove event listener -
 https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener
 
-
+adding sound - 
+https://stackoverflow.com/questions/51572489/playing-sound-on-click-event-with-pure-javascript/51572658
 */
 
