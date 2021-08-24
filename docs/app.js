@@ -8,36 +8,39 @@ const blue = document.querySelector("#two");
 const green = document.querySelector("#three");
 const yellow = document.querySelector("#four");
 
-const userSelect = (box) => {
-    box.addEventListener('click', () => {
-        box.classList.add ("flash");
-        if(red.classList.contains("flash")){
-            userChoices.push(1);
-            console.log(userChoices);
-            checkChoices();
-        } else if(blue.classList.contains("flash")){
-            userChoices.push(2);
-            console.log(userChoices);
-            checkChoices();
-        } else if(green.classList.contains("flash")){
-            userChoices.push(3);
-            console.log(userChoices);
-            checkChoices();
-        } else if(yellow.classList.contains("flash")){
-            userChoices.push(4);
-            console.log(userChoices);
-            checkChoices();
-        }
-        setTimeout(removeBoxFlash, 400, box);
-        
-
-    })
+const userSelectRed = () => {  
+    red.classList.add ("flash");
+    userChoices.push(1);
+    console.log(userChoices);
+    setTimeout(removeBoxFlash, 400, red);
+    checkChoices();
 }
 
-userSelect(red);
-userSelect(blue);
-userSelect(green);
-userSelect(yellow);
+const userSelectBlue = () => {  
+    blue.classList.add ("flash");
+    userChoices.push(2);
+    console.log(userChoices);
+    setTimeout(removeBoxFlash, 400, blue);
+    checkChoices();
+} 
+
+const userSelectGreen = () => {  
+    green.classList.add ("flash");
+    userChoices.push(3);
+    console.log(userChoices);
+    setTimeout(removeBoxFlash, 400, green);
+    checkChoices();
+
+}
+
+const userSelectYellow = (box) => {  
+    yellow.classList.add ("flash");
+    userChoices.push(4);
+    console.log(userChoices);
+    setTimeout(removeBoxFlash, 400, yellow);
+    checkChoices();
+
+}
 
 const randomNum = (min, max) => {
     min = Math.ceil(min);
@@ -110,6 +113,10 @@ const checkChoices = () =>{
         userChoices.splice(0, userChoices.length);   
     }else if(userChoices.length === computerChoices.length){
         gameStatus.innerHTML = "That was wrong.";
+        red.removeEventListener('click', userSelectRed);
+        blue.removeEventListener('click', userSelectBlue);
+        green.removeEventListener('click', userSelectGreen);
+        yellow.removeEventListener('click', userSelectYellow);
     }
 }
 
@@ -118,6 +125,10 @@ const gameStart = () => {
     changeStatus();
     computerChoices.push(randomNum(1,4));
     setTimeout(showPattern, 1500);
+    red.addEventListener('click', userSelectRed);
+    blue.addEventListener('click', userSelectBlue);
+    green.addEventListener('click', userSelectGreen);
+    yellow.addEventListener('click', userSelectYellow);
     while(userChoices.length === computerChoices.length){
         checkChoices();
         console.log(computerChoices);
@@ -151,5 +162,9 @@ https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTi
 
 delay for each - 
 https://travishorn.com/delaying-foreach-iterations-2ebd4b29ad30
+
+
+remove event listener -
+https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener
 */
 
