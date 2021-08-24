@@ -65,11 +65,11 @@ const removeBoxFlash = (box) => {
 }
 
 const changeStatus = () => {
-    gameStatus.innerHTML = 'Watch the pattern and copy it.';
+    gameStatus.innerHTML = 'Watch the pattern and copy it...';
 }
 
 const changeStatusReady = () => {
-    gameStatus.innerHTML = 'Your turn!';
+    gameStatus.innerHTML = 'Your turn.';
 }
 
 const clickEnabled = () => {
@@ -86,7 +86,6 @@ const showPattern = () => {
     yellow.removeEventListener('click', userSelectYellow);
     computerChoices.forEach((num, i) => {
         setTimeout(() => {
-            console.log(num);
             if(num === 1){
                 red.classList.add("flash");
                 setTimeout(removeRedFlash, 1000);
@@ -105,8 +104,8 @@ const showPattern = () => {
 
         );
         let time = computerChoices.length * 2000;
-        setTimeout(clickEnabled, time+100);
-        setTimeout(changeStatusReady, time+100);
+        setTimeout(clickEnabled, time);
+        setTimeout(changeStatusReady, time);
     });
 
 }
@@ -118,7 +117,7 @@ const checkChoices = () =>{
         if(userChoices[i] === computerChoices[i]){
             choicesArray.push(computerChoices[i]);
         }else if(userChoices.length > computerChoices){
-            gameStatus.innerHTML = "That was wrong.";
+            gameStatus.innerHTML = "That was wrong, game over!";
             red.removeEventListener('click', userSelectRed);
             blue.removeEventListener('click', userSelectBlue);
             green.removeEventListener('click', userSelectGreen);
@@ -139,7 +138,7 @@ const checkChoices = () =>{
         setTimeout(showPattern, 3000);
         userChoices.splice(0, userChoices.length);   
     }else if(userChoices.length === computerChoices.length){
-        gameStatus.innerHTML = "That was wrong.";
+        gameStatus.innerHTML = "That was wrong, game over!";
         red.removeEventListener('click', userSelectRed);
         blue.removeEventListener('click', userSelectBlue);
         green.removeEventListener('click', userSelectGreen);
@@ -154,11 +153,8 @@ const gameStart = () => {
     setTimeout(showPattern, 1500);
     while(userChoices.length === computerChoices.length){
         checkChoices();
-        console.log(computerChoices);
-
         userChoices.splice(0, userChoices.length);
     }
-
 }
 
 const gameReset = () => {
@@ -166,13 +162,12 @@ const gameReset = () => {
     userChoices.splice(0, userChoices.length);
     userPoints = 0
     pointsDisplayed.innerHTML = (userPoints);
-    console.log(computerChoices);
-    console.log(userChoices);
     gameStatus.innerHTML = "Press START to play.";
 }
 
 document.querySelector("body > div.buttons > button:nth-child(1)").onclick = gameStart;
 document.querySelector("body > div.buttons > button:nth-child(2)").onclick = gameReset;
+
 
 /* sources:
 random number -
