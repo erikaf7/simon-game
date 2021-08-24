@@ -11,7 +11,6 @@ const yellow = document.querySelector("#four");
 const userSelectRed = () => {  
     red.classList.add ("flash");
     userChoices.push(1);
-    console.log(userChoices);
     setTimeout(removeBoxFlash, 400, red);
     checkChoices();
 }
@@ -19,7 +18,6 @@ const userSelectRed = () => {
 const userSelectBlue = () => {  
     blue.classList.add ("flash");
     userChoices.push(2);
-    console.log(userChoices);
     setTimeout(removeBoxFlash, 400, blue);
     checkChoices();
 } 
@@ -27,7 +25,6 @@ const userSelectBlue = () => {
 const userSelectGreen = () => {  
     green.classList.add ("flash");
     userChoices.push(3);
-    console.log(userChoices);
     setTimeout(removeBoxFlash, 400, green);
     checkChoices();
 
@@ -36,7 +33,6 @@ const userSelectGreen = () => {
 const userSelectYellow = (box) => {  
     yellow.classList.add ("flash");
     userChoices.push(4);
-    console.log(userChoices);
     setTimeout(removeBoxFlash, 400, yellow);
     checkChoices();
 
@@ -110,9 +106,12 @@ const checkChoices = () =>{
     for (let i = 0; i< computerChoices.length; i++){
         if(userChoices[i] === computerChoices[i]){
             choicesArray.push(computerChoices[i]);
-        }else{
-            console.log(computerChoices);
-            console.log(userChoices);
+        }else if(userChoices.length > computerChoices){
+            gameStatus.innerHTML = "That was wrong.";
+            red.removeEventListener('click', userSelectRed);
+            blue.removeEventListener('click', userSelectBlue);
+            green.removeEventListener('click', userSelectGreen);
+            yellow.removeEventListener('click', userSelectYellow);
         }
     }
     }
