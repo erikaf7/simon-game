@@ -27,41 +27,48 @@ p{
     margin: auto auto;
     width: 475px;
     height: 475px;
-    background-color: rgb(26, 25, 25);
+    background-color: rgb(37, 37, 37);
     display: grid;
     grid-template-columns: 200px 200px;
-    border-radius: 10px;
+    border-radius: 20px;
     box-sizing:border-box;
     justify-content: space-evenly;
     align-content: space-evenly;
 
 }
 .box{
-    border-radius: 10px;
+    border-radius: 20px;
     width: 200px;
     height: 200px;
     box-sizing: border-box;
+    box-shadow:  3px 3px 2px rgb(24, 24, 24);
+    
 
 }
 
 .red {
     background-color: rgb(221, 31, 44);
     color: rgb(221, 31, 44);
+    background-image: linear-gradient(to bottom right, rgb(253, 44, 58),rgb(131, 16, 24));
 }
+
 
 .blue {
     background-color: rgb(14, 116, 212);
     color: rgb(14, 116, 212);
+    background-image: linear-gradient(to bottom right, rgb(30, 146, 255),rgb(10, 92, 168))
 }
 
 .green {
     background-color: rgb(43, 201, 56);
     color: rgb(43, 201, 56);
+    background-image: linear-gradient(to bottom right,rgb(56, 238, 71),rgb(20, 109, 28));
 }
 
 .yellow {
     background-color: rgb(241, 241, 80);
     color: rgb(241, 241, 80);
+    background-image: linear-gradient(to bottom right, rgb(255, 255, 93),rgb(167, 167, 16));
 }
 
 .flash {
@@ -70,6 +77,9 @@ p{
     text-align: center;
     font-size: 40px;
     padding: 80px 0;
+    box-shadow:  2px 2px 2px rgb(19, 19, 19);
+    transform: translateY(3px);
+    background-image: linear-gradient(rgb(248, 248, 248),rgb(230, 230, 230))
 }
 
 .buttons {
@@ -137,14 +147,21 @@ button {
     }
     .flash {
         padding: 30px 0;
+
     }
 }
 
-@media screen and (min-width: 1000px) {
+/*@media screen and (min-width: 1000px) {
     body{
         background-color: aquamarine;
     }
-}
+    .left {
+        float: left;
+    }
+    .right {
+        float: right;
+    }
+}*/
 /* sources:
 for 2x2 css grid -
 https://www.digitalocean.com/community/tutorials/css-align-justify 
@@ -155,5 +172,6 @@ https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Media_queries
 
 for buttons -
 https://www.w3schools.com/css/css3_buttons.asp
+https://css-tricks.com/almanac/properties/b/box-shadow/
 
 */
