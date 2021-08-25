@@ -8,7 +8,8 @@ const red = document.querySelector("#one");
 const blue = document.querySelector("#two");
 const green = document.querySelector("#three");
 const yellow = document.querySelector("#four");
-const volume = document.querySelector("body > div.buttons > button:nth-child(3)")
+const volume = document.querySelector("body > div.buttons > button:nth-child(3)");
+const symbol = document.querySelector("body > div.buttons > button:nth-child(4)");
 
 
 const correctSound = () => {
@@ -232,7 +233,21 @@ const volumeMute = () => {
     }
 }
 
-volume.onclick = volumeMute
+const symbolDisplay = () => {
+    symbol.classList.toggle("symbols");
+    if(symbol.classList.contains("symbols")){
+        symbol.innerHTML = "SYMBOL OFF";
+        red.innerHTML = "*";
+        blue.innerHTML = "*";
+        green.innerHTML = "*";
+        yellow.innerHTML = "*";
+    } else {
+        symbol.innerHTML = "SYMBOL ON";
+    }
+}
+
+volume.onclick = volumeMute;
+symbol.onclick = symbolDisplay;
 document.querySelector("body > div.buttons > button:nth-child(1)").onclick = gameStart;
 document.querySelector("body > div.buttons > button:nth-child(2)").onclick = gameReset;
 

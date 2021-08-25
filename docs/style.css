@@ -46,22 +46,30 @@ p{
 
 .red {
     background-color: rgb(221, 31, 44);
+    color: rgb(221, 31, 44);
 }
 
 .blue {
     background-color: rgb(14, 116, 212);
+    color: rgb(14, 116, 212);
 }
 
 .green {
     background-color: rgb(43, 201, 56);
+    color: rgb(43, 201, 56);
 }
 
 .yellow {
     background-color: rgb(241, 241, 80);
+    color: rgb(241, 241, 80);
 }
 
 .flash {
     background-color: rgb(230, 230, 230);
+    color: black;
+    text-align: center;
+    font-size: 40px;
+    padding: 90px 0;
 }
 
 .buttons {
@@ -140,6 +148,12 @@ button {
         text-align: center;
     }
     
+}
+
+@media screen and (min-width: 1000px) {
+    body{
+        background-color: aquamarine;
+    }
 }
 /* sources:
 for 2x2 css grid -
