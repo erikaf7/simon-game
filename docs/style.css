@@ -130,18 +130,6 @@ button {
     
     }
     
-    .buttons {
-        text-align: center;
-        padding-top: 1%;
-        padding-bottom: 1%;
-        margin-left: 2%;
-        margin-right: 2%;
-    }
-    
-    button {
-        padding-left: 2%;
-        padding-right: 2%;
-    }
 
     p {
         padding: 1%;
@@ -162,5 +150,8 @@ https://css-tricks.com/snippets/css/complete-guide-grid/
 
 for media query - 
 https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Media_queries
+
+for buttons -
+https://www.w3schools.com/css/css3_buttons.asp
 
 */

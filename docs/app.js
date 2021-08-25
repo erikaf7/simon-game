@@ -138,25 +138,25 @@ const showPattern = () => {
             if(num === 1){
                 red.classList.add("flash");
                 redSound();
-                setTimeout(removeRedFlash, 1000);
+                setTimeout(removeRedFlash, 500);
             } else if(num === 2){
                 blue.classList.add("flash");
                 blueSound();
-                setTimeout(removeBlueFlash, 1000);
+                setTimeout(removeBlueFlash, 500);
             }else if(num === 3){
                 green.classList.add("flash");
                 greenSound();
-                setTimeout(removeGreenFlash, 1000);
+                setTimeout(removeGreenFlash, 500);
             }else if(num === 4){
                 yellow.classList.add("flash");
                 yellowSound();
-                setTimeout(removeYellowFlash, 1000);
+                setTimeout(removeYellowFlash, 500);
             }
 
-        }, i * 2000
+        }, i * 1000
 
         );
-        let time = computerChoices.length * 2000;
+        let time = computerChoices.length * 1000;
         setTimeout(clickEnabled, time);
         setTimeout(changeStatusReady, time);
     });
@@ -206,7 +206,7 @@ const gameStart = () => {
     gameReset();
     changeStatus();
     computerChoices.push(randomNum(1,4));
-    setTimeout(showPattern, 1500);
+    setTimeout(showPattern, 1000);
     while(userChoices.length === computerChoices.length){
         checkChoices();
         userChoices.splice(0, userChoices.length);
@@ -243,6 +243,10 @@ const symbolDisplay = () => {
         yellow.innerHTML = "*";
     } else {
         symbol.innerHTML = "SYMBOL ON";
+        red.innerHTML = "";
+        blue.innerHTML = "";
+        green.innerHTML = "";
+        yellow.innerHTML = "";
     }
 }
 
