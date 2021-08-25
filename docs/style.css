@@ -16,22 +16,20 @@ h1 {
     padding-bottom: 2%;
 }
 h2{
+    text-align: center;
     font-family: 'Pattaya', sans-serif;
 }
 p{
+    text-align: center;
     font-family: 'Roboto', sans-serif;
 }
 .container {
     margin: auto auto;
     width: 475px;
     height: 475px;
-    background-color: rgb(44,44,44);
+    background-color: rgb(26, 25, 25);
     display: grid;
     grid-template-columns: 200px 200px;
-    /*column-gap: 10px;
-    row-gap: 10px;
-    justify-items: center;
-    align-items: center;*/
     border-radius: 10px;
     box-sizing:border-box;
     justify-content: space-evenly;
@@ -110,10 +108,6 @@ button {
         background-color: rgb(44,44,44);
         display: grid;
         grid-template-columns: 100px 100px;
-        /*column-gap: 10px;
-        row-gap: 10px;
-        justify-items: center;
-        align-items: center;*/
         border-radius: 10px;
         box-sizing:border-box;
         justify-content: space-evenly;
@@ -126,26 +120,6 @@ button {
         height: 100px;
         box-sizing: border-box;
     
-    }
-    
-    .red {
-        background-color: rgb(221, 31, 44);
-    }
-    
-    .blue {
-        background-color: rgb(14, 116, 212);
-    }
-    
-    .green {
-        background-color: rgb(43, 201, 56);
-    }
-    
-    .yellow {
-        background-color: rgb(241, 241, 80);
-    }
-    
-    .flash {
-        background-color: rgb(230, 230, 230);
     }
     
     .buttons {

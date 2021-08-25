@@ -170,7 +170,7 @@ const checkChoices = () =>{
             choicesArray.push(computerChoices[i]);
         }else if(userChoices.length > computerChoices){
             gameStatus.innerHTML = "That was wrong, game over!";
-            incorrectSound();
+            setTimeout(incorrectSound, 500);
             red.removeEventListener('click', userSelectRed);
             blue.removeEventListener('click', userSelectBlue);
             green.removeEventListener('click', userSelectGreen);
@@ -193,7 +193,7 @@ const checkChoices = () =>{
         userChoices.splice(0, userChoices.length);   
     }else if(userChoices.length === computerChoices.length){
         gameStatus.innerHTML = "That was wrong, game over!";
-        incorrectSound();
+        setTimeout(incorrectSound, 500);
         red.removeEventListener('click', userSelectRed);
         blue.removeEventListener('click', userSelectBlue);
         green.removeEventListener('click', userSelectGreen);
@@ -218,6 +218,7 @@ const gameReset = () => {
     userPoints = 0
     pointsDisplayed.innerHTML = (userPoints);
     gameStatus.innerHTML = "Press START to play.";
+    
 }
 
 const volumeMute = () => {
