@@ -2,6 +2,7 @@ const computerChoices = [];
 const userChoices = [];
 let userPoints = 0;
 let soundOn = true;
+let gameRunning = false;
 let pointsDisplayed = document.querySelector("body > div:nth-child(5) > p:nth-child(2) > span");
 let highScoreDisplay = document.querySelector("body > div:nth-child(5) > p:nth-child(3) > span");
 let gameStatus = document.querySelector("body > div:nth-child(4) > p");
@@ -120,15 +121,21 @@ const changeStatus = () => {
 }
 
 const changeStatusReady = () => {
-    gameStatus.innerHTML = 'Your turn.';
+    if(gameRunning === true){
+        gameStatus.innerHTML = 'Your turn.';
+    }
+
 }
 
 
 const clickEnabled = () => {
-    red.addEventListener('click', userSelectRed);
-    blue.addEventListener('click', userSelectBlue);
-    green.addEventListener('click', userSelectGreen);
-    yellow.addEventListener('click', userSelectYellow);
+    if(gameRunning === true){
+        red.addEventListener('click', userSelectRed);
+        blue.addEventListener('click', userSelectBlue);
+        green.addEventListener('click', userSelectGreen);
+        yellow.addEventListener('click', userSelectYellow);
+    }
+
 }
 
 const showPattern = () => {
@@ -136,33 +143,34 @@ const showPattern = () => {
     blue.removeEventListener('click', userSelectBlue);
     green.removeEventListener('click', userSelectGreen);
     yellow.removeEventListener('click', userSelectYellow);
-    computerChoices.forEach((num, i) => {
-        setTimeout(() => {
-            if(num === 1){
-                red.classList.add("flash");
-                redSound();
-                setTimeout(removeRedFlash, 500);
-            } else if(num === 2){
-                blue.classList.add("flash");
-                blueSound();
-                setTimeout(removeBlueFlash, 500);
-            }else if(num === 3){
-                green.classList.add("flash");
-                greenSound();
-                setTimeout(removeGreenFlash, 500);
-            }else if(num === 4){
-                yellow.classList.add("flash");
-                yellowSound();
-                setTimeout(removeYellowFlash, 500);
-            }
+        computerChoices.forEach((num, i) => {
+            setTimeout(() => {
+                if(num === 1 && gameRunning === true){
+                    red.classList.add("flash");
+                    redSound();
+                    setTimeout(removeRedFlash, 500);
+                } else if(num === 2 && gameRunning === true){
+                    blue.classList.add("flash");
+                    blueSound();
+                    setTimeout(removeBlueFlash, 500);
+                }else if(num === 3 && gameRunning === true){
+                    green.classList.add("flash");
+                    greenSound();
+                    setTimeout(removeGreenFlash, 500);
+                }else if(num === 4 && gameRunning === true){
+                    yellow.classList.add("flash");
+                    yellowSound();
+                    setTimeout(removeYellowFlash, 500);
+                }
+    
+            }, i * 1000
+    
+            );
+            let time = computerChoices.length * 1000;
+            setTimeout(clickEnabled, time);
+            setTimeout(changeStatusReady, time);
 
-        }, i * 1000
-
-        );
-        let time = computerChoices.length * 1000;
-        setTimeout(clickEnabled, time);
-        setTimeout(changeStatusReady, time);
-    });
+        });
 
 }
 
@@ -211,6 +219,7 @@ const checkChoices = () =>{
 
 const gameStart = () => {
     gameReset();
+    gameRunning = true;
     changeStatus();
     computerChoices.push(randomNum(1,4));
     setTimeout(showPattern, 1000);
@@ -221,6 +230,7 @@ const gameStart = () => {
 }
 
 const gameReset = () => {
+    gameRunning = false;
     computerChoices.splice(0, computerChoices.length);
     userChoices.splice(0, userChoices.length);
     userPoints = 0
@@ -241,7 +251,7 @@ const volumeMute = () => {
 }
 
 
-
+setHighScore();
 volume.onclick = volumeMute;
 document.querySelector("body > div.buttons > button:nth-child(1)").onclick = gameStart;
 document.querySelector("body > div.buttons > button:nth-child(2)").onclick = gameReset;
