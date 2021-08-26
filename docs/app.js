@@ -252,6 +252,7 @@ const volumeMute = () => {
 
 
 setHighScore();
+console.log(localStorage.getItem('score'));
 volume.onclick = volumeMute;
 document.querySelector("body > div.buttons > button:nth-child(1)").onclick = gameStart;
 document.querySelector("body > div.buttons > button:nth-child(2)").onclick = gameReset;
