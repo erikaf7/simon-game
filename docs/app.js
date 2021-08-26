@@ -2,7 +2,8 @@ const computerChoices = [];
 const userChoices = [];
 let userPoints = 0;
 let soundOn = true;
-let pointsDisplayed = document.querySelector("body > div:nth-child(5) > p");
+let pointsDisplayed = document.querySelector("body > div:nth-child(5) > p:nth-child(2) > span");
+let highScoreDisplay = document.querySelector("body > div:nth-child(5) > p:nth-child(3) > span");
 let gameStatus = document.querySelector("body > div:nth-child(4) > p");
 const red = document.querySelector("#one");
 const blue = document.querySelector("#two");
@@ -10,7 +11,9 @@ const green = document.querySelector("#three");
 const yellow = document.querySelector("#four");
 const volume = document.querySelector("body > div.buttons > button:nth-child(3)");
 
-
+const setHighScore = () => {
+    highScoreDisplay.innerHTML = localStorage.getItem('score');
+}
 
 const correctSound = () => {
     if(soundOn === true){
@@ -187,6 +190,10 @@ const checkChoices = () =>{
         green.removeEventListener('click', userSelectGreen);
         yellow.removeEventListener('click', userSelectYellow);
         userPoints ++;
+        if(userPoints> localStorage.getItem('score', userPoints)){
+            localStorage.setItem('score', userPoints);
+            setHighScore();
+        }
         pointsDisplayed.innerHTML = (userPoints);
         setTimeout(changeStatus, 1500);
         computerChoices.push(randomNum(1,4));
@@ -258,5 +265,8 @@ https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener
 
 adding sound - 
 https://stackoverflow.com/questions/51572489/playing-sound-on-click-event-with-pure-javascript/51572658
+
+client side storage-
+https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage
 */
 
