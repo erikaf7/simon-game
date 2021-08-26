@@ -12,6 +12,7 @@ const green = document.querySelector("#three");
 const yellow = document.querySelector("#four");
 const volume = document.querySelector("body > div.buttons > button:nth-child(3)");
 
+localStorage.setItem('score', 0);
 const setHighScore = () => {
     highScoreDisplay.innerHTML = localStorage.getItem('score');
 }
@@ -26,6 +27,14 @@ const correctSound = () => {
 const incorrectSound = () => {
     if(soundOn === true){
         let audio = new Audio("incorrect.mp3");
+        audio.play();
+    }
+
+}
+
+const winSound = () => {
+    if(soundOn === true){
+        let audio = new Audio("win.mp3");
         audio.play();
     }
 
@@ -181,12 +190,32 @@ const checkChoices = () =>{
         if(userChoices[i] === computerChoices[i]){
             choicesArray.push(computerChoices[i]);
         }else if(userChoices.length > computerChoices){
-            gameStatus.innerHTML = "That was wrong, game over!";
-            setTimeout(incorrectSound, 500);
-            red.removeEventListener('click', userSelectRed);
-            blue.removeEventListener('click', userSelectBlue);
-            green.removeEventListener('click', userSelectGreen);
-            yellow.removeEventListener('click', userSelectYellow);
+            if (userPoints < localStorage.getItem('score', userPoints)){
+                gameStatus.innerHTML = "That was the wrong pattern, game over. Press START to try again.";
+                setTimeout(incorrectSound, 500);
+                red.removeEventListener('click', userSelectRed);
+                blue.removeEventListener('click', userSelectBlue);
+                green.removeEventListener('click', userSelectGreen);
+                yellow.removeEventListener('click', userSelectYellow);
+            } else if(userPoints >= localStorage.getItem('score', userPoints)){
+                if(userPoints === 1){
+                    gameStatus.innerHTML = `That was the wrong pattern, game over. Congratulations, you won with ${localStorage.getItem('score', userPoints)} point!!`
+                    setTimeout(winSound, 500);
+                    red.removeEventListener('click', userSelectRed);
+                    blue.removeEventListener('click', userSelectBlue);
+                    green.removeEventListener('click', userSelectGreen);
+                    yellow.removeEventListener('click', userSelectYellow);
+                }else {
+                    gameStatus.innerHTML = `That was the wrong pattern, game over. Congratulations, you won with ${localStorage.getItem('score', userPoints)} points!!`
+                    setTimeout(winSound, 500);
+                    red.removeEventListener('click', userSelectRed);
+                    blue.removeEventListener('click', userSelectBlue);
+                    green.removeEventListener('click', userSelectGreen);
+                    yellow.removeEventListener('click', userSelectYellow);
+                }
+
+            }
+
         }
     }
     }
@@ -208,12 +237,30 @@ const checkChoices = () =>{
         setTimeout(showPattern, 3000);
         userChoices.splice(0, userChoices.length);   
     }else if(userChoices.length === computerChoices.length){
-        gameStatus.innerHTML = "That was wrong, game over!";
-        setTimeout(incorrectSound, 500);
-        red.removeEventListener('click', userSelectRed);
-        blue.removeEventListener('click', userSelectBlue);
-        green.removeEventListener('click', userSelectGreen);
-        yellow.removeEventListener('click', userSelectYellow);
+        if (userPoints < localStorage.getItem('score', userPoints)){
+            gameStatus.innerHTML = "That was wrong, game over. Press START to try again.";
+            setTimeout(incorrectSound, 500);
+            red.removeEventListener('click', userSelectRed);
+            blue.removeEventListener('click', userSelectBlue);
+            green.removeEventListener('click', userSelectGreen);
+            yellow.removeEventListener('click', userSelectYellow);
+        }else if(userPoints >= localStorage.getItem('score', userPoints)){
+            if(userPoints === 1){
+                gameStatus.innerHTML = `That was the wrong pattern, game over. Congratulations, you won with ${localStorage.getItem('score', userPoints)} point!!`;
+                setTimeout(winSound, 500);
+                red.removeEventListener('click', userSelectRed);
+                blue.removeEventListener('click', userSelectBlue);
+                green.removeEventListener('click', userSelectGreen);
+                yellow.removeEventListener('click', userSelectYellow);
+            }else {
+                gameStatus.innerHTML = `That was the wrong pattern, game over. Congratulations, you won with ${localStorage.getItem('score', userPoints)} points!!`;
+                setTimeout(winSound, 500);
+                red.removeEventListener('click', userSelectRed);
+                blue.removeEventListener('click', userSelectBlue);
+                green.removeEventListener('click', userSelectGreen);
+                yellow.removeEventListener('click', userSelectYellow);
+            }
+        }
     }
 }
 
