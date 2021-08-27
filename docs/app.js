@@ -12,7 +12,7 @@ const green = document.querySelector("#three");
 const yellow = document.querySelector("#four");
 const volume = document.querySelector("body > div.buttons > button:nth-child(3)");
 
-localStorage.setItem('score', 0);
+
 const setHighScore = () => {
     highScoreDisplay.innerHTML = localStorage.getItem('score');
 }
