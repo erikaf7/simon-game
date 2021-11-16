@@ -23,8 +23,7 @@ h2{
 p{
     text-align: center;
     font-family: 'Roboto', sans-serif;
-
-
+    padding: 1%;
 }
 .container {
     margin: auto auto;
@@ -121,6 +120,8 @@ button {
     }
     p{
         font-family: 'Roboto', sans-serif;
+        padding: 1%;
+        text-align: center;
     }
     .container {
         margin: auto auto;
@@ -143,11 +144,6 @@ button {
     
     }
     
-
-    p {
-        padding: 1%;
-        text-align: center;
-    }
     .flash {
         padding: 30px 0;
 
